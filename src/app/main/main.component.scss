@@ -1,0 +1,85 @@
+@import "src/styles";
+
+.main {
+  padding: 50px;
+
+  &__call-text {
+    margin: 0 0 30px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: $color-neutral;
+  }
+
+  &__create-btn {
+    margin: 0 0 50px;
+    padding: 12px 42px;
+
+    background-color: $color-primary;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: $color-white;
+  }
+
+  &__table-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 25px;
+
+    &__title {
+      margin: 0;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 32px;
+      color: $color-neutral;
+    }
+
+    &__filter {
+      margin: 0;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      color: $color-neutral-gray;
+    }
+  }
+
+  &__table {
+    width: 100%;
+
+    & th,
+    & td {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      color: $color-neutral-gray;
+    }
+  }
+}
+
+h1 {
+  margin: 0 0 20px;
+
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: $color-neutral;
+}
+
+.view-ticket-btn {
+  padding: 8px 10px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: $color-neutral-gray;
+}
+
+.gradient-id {
+  background-color: red;
+  background-image: linear-gradient(90deg, $color-neutral 24%, #FFFFFF 45%);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

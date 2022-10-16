@@ -34,58 +34,91 @@ export class TicketRepositoryService {
 // MOCK DATA
 const TICKETS: ITicket[] = [
   {
-    id: 'ab0d253340er9ws76f9fv78dyf9sf', created: new Date(), updated: new Date(),
+    id: 'ab0d253340er9ws76f9fv78dyf9sf',
+    created: new Date(),
+    updated: new Date(),
     title: 'Lorem ipsum dolor sit amet',
-    status: TicketStatus.new, department: Department.financialDepartment
+    status: TicketStatus.new,
+    department: Department.financialDepartment
   },
   {
-    id: 'ab1d253340er9ws76f9fv78dyf9sf', created: new Date(), updated: new Date(),
+    id: 'ab1d253340er9ws76f9fv78dyf9sf',
+    created: new Date(),
+    updated: new Date(),
     title: 'Lorem ipsum dolor sit amet',
-    status: TicketStatus.edited, department: Department.projectVerificationDepartment
+    status: TicketStatus.edited,
+    department: Department.projectVerificationDepartment
   },
   {
-    id: 'ab2d253340er9ws76f9fv78dyf9sf', created: new Date(), updated: new Date(),
+    id: 'ab2d253340er9ws76f9fv78dyf9sf',
+    created: new Date(),
+    updated: new Date(),
     title: 'Lorem ipsum dolor sit amet',
-    status: TicketStatus.new, department: Department.technicalDepartment
+    status: TicketStatus.new,
+    department: Department.technicalDepartment
   },
   {
-    id: 'ab3d253340er9ws76f9fv78dyf9sf', created: new Date(), updated: new Date(),
+    id: 'ab3d253340er9ws76f9fv78dyf9sf',
+    created: new Date(),
+    updated: new Date(),
     title: 'Lorem ipsum dolor sit amet',
-    status: TicketStatus.edited, department: Department.salesDepartment
+    status: TicketStatus.edited,
+    department: Department.salesDepartment
   },
   {
-    id: 'ab4d253340er9ws76f9fv78dyf9sf', created: new Date(), updated: new Date(),
+    id: 'ab4d253340er9ws76f9fv78dyf9sf',
+    created: new Date(),
+    updated: new Date(),
     title: 'Lorem ipsum dolor sit amet',
-    status: TicketStatus.edited, department: Department.accountVerificationDepartment
+    status: TicketStatus.edited,
+    department: Department.accountVerificationDepartment
   },
   {
-    id: 'ab5d253340er9ws76f9fv78dyf9sf', created: new Date(), updated: new Date(),
+    id: 'ab5d253340er9ws76f9fv78dyf9sf',
+    created: new Date(),
+    updated: new Date(),
     title: 'Lorem ipsum dolor sit amet',
-    status: TicketStatus.new, department: Department.complianceRiskDepartment
+    status: TicketStatus.new,
+    department: Department.complianceRiskDepartment
   },
   {
-    id: 'ab6d253340er9ws76f9fv78dyf9sf', created: new Date(), updated: new Date(),
+    id: 'ab6d253340er9ws76f9fv78dyf9sf',
+    created: new Date(),
+    updated: new Date(),
     title: 'Lorem ipsum dolor sit amet',
-    status: TicketStatus.edited, department: Department.projectVerificationDepartment
+    status: TicketStatus.edited,
+    department: Department.projectVerificationDepartment
   },
   {
-    id: 'ab7d253340er9ws76f9fv78dyf9sf', created: new Date(), updated: new Date(),
+    id: 'ab7d253340er9ws76f9fv78dyf9sf',
+    created: new Date(),
+    updated: new Date(),
     title: 'Lorem ipsum dolor sit amet',
-    status: TicketStatus.new, department: Department.withdrawalDepartment
+    status: TicketStatus.new,
+    department: Department.withdrawalDepartment
   },
   {
-    id: 'ab8d253340er9ws76f9fv78dyf9sf', created: new Date(), updated: new Date(),
+    id: 'ab8d253340er9ws76f9fv78dyf9sf',
+    created: new Date(),
+    updated: new Date(),
     title: 'Lorem ipsum dolor sit amet',
-    status: TicketStatus.edited, department: Department.technicalDepartment
+    status: TicketStatus.edited,
+    department: Department.technicalDepartment
   },
   {
-    id: 'ab9d253340er9ws76f9fv78dyf9sf', created: new Date(), updated: new Date(),
+    id: 'ab9d253340er9ws76f9fv78dyf9sf',
+    created: new Date(),
+    updated: new Date(),
     title: 'Lorem ipsum dolor sit amet',
-    status: TicketStatus.new, department: Department.securityDepartment
+    status: TicketStatus.new,
+    department: Department.securityDepartment
   },
   {
-    id: 'ab1a253340er9ws76f9fv78dyf9sf', created: new Date(), updated: new Date(),
+    id: 'ab1a253340er9ws76f9fv78dyf9sf',
+    created: new Date(),
+    updated: new Date(),
     title: 'Lorem ipsum dolor sit amet',
-    status: TicketStatus.edited, department: Department.salesDepartment
+    status: TicketStatus.edited,
+    department: Department.salesDepartment
   },
 ]

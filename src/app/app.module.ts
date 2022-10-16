@@ -12,12 +12,20 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {HttpClientModule} from "@angular/common/http";
+import {TicketStatusDirective} from './directives/ticket-status.directive';
+import { TicketDateHTMLPipe } from './pipes/ticket-date.pipe';
+import { TicketIdPipe } from './pipes/ticket-id.pipe';
+import { CopyToClipboardDirective } from './directives/copy-to-clipboard.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    TicketFormComponent
+    TicketFormComponent,
+    TicketStatusDirective,
+    TicketDateHTMLPipe,
+    TicketIdPipe,
+    CopyToClipboardDirective
   ],
   imports: [
     BrowserModule,
@@ -29,6 +37,9 @@ import {HttpClientModule} from "@angular/common/http";
     MatTableModule,
     MatPaginatorModule,
     MatSortModule
+  ],
+  exports: [
+    TicketStatusDirective,
   ],
   providers: [],
   bootstrap: [AppComponent]
