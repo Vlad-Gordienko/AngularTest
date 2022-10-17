@@ -17,6 +17,8 @@ import {TicketDateHTMLPipe} from './pipes/ticket-date.pipe';
 import {TicketIdPipe} from './pipes/ticket-id.pipe';
 import {CopyToClipboardDirective} from './directives/copy-to-clipboard.directive';
 import {CKEditorModule} from "ckeditor4-angular";
+import {ReactiveFormsModule} from "@angular/forms";
+import {DragFileDirective} from './directives/drag-file.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {CKEditorModule} from "ckeditor4-angular";
     TicketStatusDirective,
     TicketDateHTMLPipe,
     TicketIdPipe,
-    CopyToClipboardDirective
+    CopyToClipboardDirective,
+    DragFileDirective
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import {CKEditorModule} from "ckeditor4-angular";
     MatPaginatorModule,
     MatSortModule,
     CKEditorModule,
+    ReactiveFormsModule,
   ],
   exports: [
     TicketStatusDirective,

@@ -4,9 +4,10 @@ export interface ITicket {
   id?: ID;
   created?: Date;
   updated?: Date;
+  name: string;
   department: Department;
   title: string;
-  status: TicketStatus;
+  status?: TicketStatus;
   attachment?: File;
 }
 

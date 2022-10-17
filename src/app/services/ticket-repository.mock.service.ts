@@ -18,9 +18,13 @@ export class TicketRepositoryMockService {
   }
 
   create(ticket: ITicket): Observable<null> {
-    ticket.id = 'aff' + Math.random().toString().slice(2);
-    ticket.created = new Date();
-    ticket.updated = new Date();
+    ticket = {
+      ...ticket,
+      id: 'aff' + Math.random().toString().slice(2),
+      created: new Date(),
+      updated: new Date(),
+      status: TicketStatus.new,
+    }
     TICKETS.push(ticket);
     return of(null);
   }
@@ -31,6 +35,7 @@ export class TicketRepositoryMockService {
       TICKETS[index] = {
         ...TICKETS[index],
         ...ticket,
+        status: TicketStatus.edited,
         updated: new Date(),
       }
     }
@@ -45,6 +50,7 @@ const TICKETS: ITicket[] = [
     id: 'ab0d253340er9ws76f9fv78dyf9sf',
     created: new Date(),
     updated: new Date(),
+    name: 'Name',
     title: 'Lorem ipsum dolor sit amet',
     status: TicketStatus.new,
     department: Department.financialDepartment
@@ -53,6 +59,7 @@ const TICKETS: ITicket[] = [
     id: 'ab1d253340er9ws76f9fv78dyf9sf',
     created: new Date(),
     updated: new Date(),
+    name: 'Name',
     title: 'Lorem ipsum dolor sit amet',
     status: TicketStatus.edited,
     department: Department.projectVerificationDepartment
@@ -61,6 +68,7 @@ const TICKETS: ITicket[] = [
     id: 'ab2d253340er9ws76f9fv78dyf9sf',
     created: new Date(),
     updated: new Date(),
+    name: 'Name',
     title: 'Lorem ipsum dolor sit amet',
     status: TicketStatus.new,
     department: Department.technicalDepartment
@@ -69,6 +77,7 @@ const TICKETS: ITicket[] = [
     id: 'ab3d253340er9ws76f9fv78dyf9sf',
     created: new Date(),
     updated: new Date(),
+    name: 'Name',
     title: 'Lorem ipsum dolor sit amet',
     status: TicketStatus.edited,
     department: Department.salesDepartment
@@ -77,6 +86,7 @@ const TICKETS: ITicket[] = [
     id: 'ab4d253340er9ws76f9fv78dyf9sf',
     created: new Date(),
     updated: new Date(),
+    name: 'Name',
     title: 'Lorem ipsum dolor sit amet',
     status: TicketStatus.edited,
     department: Department.accountVerificationDepartment
@@ -85,6 +95,7 @@ const TICKETS: ITicket[] = [
     id: 'ab5d253340er9ws76f9fv78dyf9sf',
     created: new Date(),
     updated: new Date(),
+    name: 'Name',
     title: 'Lorem ipsum dolor sit amet',
     status: TicketStatus.new,
     department: Department.complianceRiskDepartment
@@ -93,6 +104,7 @@ const TICKETS: ITicket[] = [
     id: 'ab6d253340er9ws76f9fv78dyf9sf',
     created: new Date(),
     updated: new Date(),
+    name: 'Name',
     title: 'Lorem ipsum dolor sit amet',
     status: TicketStatus.edited,
     department: Department.projectVerificationDepartment
@@ -101,6 +113,7 @@ const TICKETS: ITicket[] = [
     id: 'ab7d253340er9ws76f9fv78dyf9sf',
     created: new Date(),
     updated: new Date(),
+    name: 'Name',
     title: 'Lorem ipsum dolor sit amet',
     status: TicketStatus.new,
     department: Department.withdrawalDepartment
@@ -109,6 +122,7 @@ const TICKETS: ITicket[] = [
     id: 'ab8d253340er9ws76f9fv78dyf9sf',
     created: new Date(),
     updated: new Date(),
+    name: 'Name',
     title: 'Lorem ipsum dolor sit amet',
     status: TicketStatus.edited,
     department: Department.technicalDepartment
@@ -117,6 +131,7 @@ const TICKETS: ITicket[] = [
     id: 'ab9d253340er9ws76f9fv78dyf9sf',
     created: new Date(),
     updated: new Date(),
+    name: 'Name',
     title: 'Lorem ipsum dolor sit amet',
     status: TicketStatus.new,
     department: Department.securityDepartment
@@ -125,6 +140,7 @@ const TICKETS: ITicket[] = [
     id: 'ab1a253340er9ws76f9fv78dyf9sf',
     created: new Date(),
     updated: new Date(),
+    name: 'Name',
     title: 'Lorem ipsum dolor sit amet',
     status: TicketStatus.edited,
     department: Department.salesDepartment

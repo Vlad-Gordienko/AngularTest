@@ -1,4 +1,4 @@
-<section class="ticket-form">
+<form class="ticket-form" [formGroup]="form">
   <h1 class="ticket-form__title" mat-dialog-title>
     Need help? Send a ticket
   </h1>
@@ -8,27 +8,34 @@
   <div mat-dialog-content style="display: flex; flex-direction: column">
     <input type="text"
            class="ticket-form__control"
-           placeholder="Request name">
-    <select class="ticket-form__control">
+           placeholder="Request name" formControlName="name">
+    <select class="ticket-form__control" formControlName="department">
       <option [value]="null">Department</option>
+      <option [value]="department" *ngFor="let department of departments">{{department}}</option>
     </select>
-    <ckeditor data="<p>Hello, world!</p>" style="margin-bottom: 15px"></ckeditor>
+    <ckeditor style="margin-bottom: 15px" formControlName="title"></ckeditor>
     <span class="ticket-form__label">Add attachment</span>
-    <div class="ticket-form__file-input">
+    <div class="ticket-form__file-input" appDragFile (onSelectFile)="setAttachment($event)">
       <span>Drag and drop your document here or</span>
-      <button>Select a file</button>
+      <input #attach type="file" (change)="onChangeInputFile($event)">
+      <button (click)="attach.click()">Select a file</button>
     </div>
-    <div class="ticket-form__file-preview">
+    <div class="ticket-form__file-preview" *ngFor="let attachment of attachments?.value || []; let index = index">
       <img src="assets/images/pdf.png" alt="pdf file">
-      <span>document.pdf</span>
+      <span>{{ attachment.name }}</span>
       <div style="flex: 1"></div>
-      <button type="button"><mat-icon>close</mat-icon></button>
+      <button type="button"
+              (click)="removeAttachment(attachment);">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
   </div>
   <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="data" cdkFocusInitial class="ticket-form__create-btn">
+    <button mat-button [mat-dialog-close]="data"
+            cdkFocusInitial class="ticket-form__create-btn"
+            [disabled]="form.invalid">
       Send ticket
     </button>
   </div>
 
-</section>
+</form>

@@ -25,7 +25,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTickets();
-    this.openTicketForm();
   }
 
   getTickets() {
@@ -45,8 +44,11 @@ export class MainComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(ticket => {
-      console.log(ticket);
-      this.ticketRepository.create({...this.tickets.data[0]}).subscribe(() => this.getTickets());
+      if (ticket?.id) {
+        this.ticketRepository.update(ticket).subscribe(() => this.getTickets());
+      } else if (ticket) {
+        this.ticketRepository.create(ticket).subscribe(() => this.getTickets());
+      }
     });
   }
 
