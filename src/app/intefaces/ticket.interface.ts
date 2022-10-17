@@ -8,7 +8,7 @@ export interface ITicket {
   department: Department;
   title: string;
   status?: TicketStatus;
-  attachment?: File;
+  attachment?: FileList;
 }
 
 export enum Department {

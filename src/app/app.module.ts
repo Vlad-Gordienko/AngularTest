@@ -19,6 +19,9 @@ import {CopyToClipboardDirective} from './directives/copy-to-clipboard.directive
 import {CKEditorModule} from "ckeditor4-angular";
 import {ReactiveFormsModule} from "@angular/forms";
 import {DragFileDirective} from './directives/drag-file.directive';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import {DragFileDirective} from './directives/drag-file.directive';
     MatSortModule,
     CKEditorModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   exports: [
     TicketStatusDirective,

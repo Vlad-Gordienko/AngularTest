@@ -4,8 +4,28 @@ import {TicketFormComponent} from "./components/ticket-form/ticket-form.componen
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {ITicket} from "../intefaces/ticket.interface";
+import {Department, ID, ITicket, TicketStatus} from "../intefaces/ticket.interface";
 import {TicketRepositoryMockService} from "../services/ticket-repository.mock.service";
+import {FormControl, FormGroup} from "@angular/forms";
+import {clearNull} from "../utils/utils";
+
+interface IFilterForm {
+  id: FormControl<ID | null>;
+  created: FormControl<Date | null>;
+  updated: FormControl<Date | null>;
+  department: FormControl<Department | null>;
+  title: FormControl<string | null>;
+  status: FormControl<TicketStatus | null>;
+}
+
+interface IFilter {
+  id?: string;
+  created?: string;
+  updated?: string;
+  department?: string;
+  title?: string;
+  status?: string;
+}
 
 
 @Component({
@@ -16,8 +36,13 @@ import {TicketRepositoryMockService} from "../services/ticket-repository.mock.se
 export class MainComponent implements OnInit {
   tickets = new MatTableDataSource<ITicket>([]);
   initialPageSize = 20;
+  showFilter: boolean = false;
+  departments: string[] = Object.values(Department);
+  statuses: string[] = Object.values(TicketStatus);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  filterForm!: FormGroup<IFilterForm>;
 
   constructor(public dialog: MatDialog,
               private ticketRepository: TicketRepositoryMockService) {
@@ -25,10 +50,26 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTickets();
+    this.filterForm = new FormGroup<IFilterForm>({
+      id: new FormControl<ID>(null!),
+      created: new FormControl<Date>(null!),
+      updated: new FormControl<Date>(null!),
+      department: new FormControl<Department>(null!),
+      title: new FormControl<string>(null!),
+      status: new FormControl<TicketStatus>(null!),
+    })
+
+    this.filterForm.valueChanges.subscribe(filter => {
+      clearNull(filter);
+    })
   }
 
-  getTickets() {
-    this.ticketRepository.getAll({size: this.initialPageSize, page: 0}).subscribe(tickets => {
+  getTickets(filter?: IFilter) {
+    this.ticketRepository.getAll({
+      size: this.tickets.paginator?.pageSize || this.initialPageSize,
+      page: this.tickets.paginator?.pageIndex || 0,
+      ...filter
+    }).subscribe(tickets => {
       this.tickets.data = tickets;
     });
   }

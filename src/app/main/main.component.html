@@ -8,11 +8,53 @@
   <div class="main__table-header">
     <h2 class="main__table-header__title">Tickets</h2>
 
-    <button mat-stroked-button class="main__table-header__filter">
+    <button mat-stroked-button class="main__table-header__filter-btn" (click)="showFilter = !showFilter">
       <span>Filter</span>
       <mat-icon>filter_list</mat-icon>
     </button>
   </div>
+
+  <ng-container *ngIf="showFilter">
+    <form class="main__filter" [formGroup]="filterForm">
+      <mat-form-field appearance="outline">
+        <mat-label>ID</mat-label>
+        <input matInput placeholder="Enter ID" formControlName="id">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Created</mat-label>
+        <input matInput type="date" formControlName="created">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Updated</mat-label>
+        <input matInput type="date" formControlName="updated">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Department</mat-label>
+        <mat-select formControlName="department">
+          <mat-option *ngFor="let department of departments" [value]="department">
+            {{department}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Enter title" formControlName="title">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Statuses</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let status of statuses" [value]="status">
+            {{status}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </ng-container>
 
   <ng-container>
     <table class="main__table" mat-table [dataSource]="tickets" matSort>
@@ -27,12 +69,16 @@
 
       <ng-container matColumnDef="created">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Created</th>
-        <td mat-cell *matCellDef="let element"> <div [innerHTML]="element.created | ticketDateHTML"></div></td>
+        <td mat-cell *matCellDef="let element">
+          <div [innerHTML]="element.created | ticketDateHTML"></div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="updated">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Updated</th>
-        <td mat-cell *matCellDef="let element"> <div [innerHTML]="element.updated | ticketDateHTML"></div></td>
+        <td mat-cell *matCellDef="let element">
+          <div [innerHTML]="element.updated | ticketDateHTML"></div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="department">
@@ -47,7 +93,9 @@
 
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-        <td mat-cell *matCellDef="let element"> <div [appTicketStatus]="element.status!"></div> </td>
+        <td mat-cell *matCellDef="let element">
+          <div [appTicketStatus]="element.status!"></div>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="details">
@@ -57,8 +105,10 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="['id', 'created', 'updated', 'department', 'title', 'status', 'details']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['id', 'created', 'updated', 'department', 'title', 'status', 'details'];"></tr>
+      <tr mat-header-row
+          *matHeaderRowDef="['id', 'created', 'updated', 'department', 'title', 'status', 'details']"></tr>
+      <tr mat-row
+          *matRowDef="let row; columns: ['id', 'created', 'updated', 'department', 'title', 'status', 'details'];"></tr>
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]"

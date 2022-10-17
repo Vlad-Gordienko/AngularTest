@@ -13,6 +13,12 @@ export interface QueryParams {
   providedIn: 'root'
 })
 export class TicketRepositoryMockService {
+  /**
+   * SIMPLE MOCK GET ALL
+   * NO FILTER MOCK
+   * NO PAGINATION MOCK
+   * NO SORT MOCK
+   * */
   getAll(queryParams?: QueryParams): Observable<ITicket[]> {
     return of(queryParams?.size ? TICKETS.slice(0, queryParams.size) : TICKETS);
   }
