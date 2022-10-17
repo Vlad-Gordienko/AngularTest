@@ -5,7 +5,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {ITicket} from "../intefaces/ticket.interface";
-import {TicketRepositoryService} from "../services/ticket-repository.service";
+import {TicketRepositoryMockService} from "../services/ticket-repository.mock.service";
 
 
 @Component({
@@ -15,18 +15,23 @@ import {TicketRepositoryService} from "../services/ticket-repository.service";
 })
 export class MainComponent implements OnInit {
   tickets = new MatTableDataSource<ITicket>([]);
-  initialPageSize = 5;
+  initialPageSize = 20;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(public dialog: MatDialog,
-              private ticketRepository: TicketRepositoryService) {
+              private ticketRepository: TicketRepositoryMockService) {
   }
 
   ngOnInit(): void {
+    this.getTickets();
+    this.openTicketForm();
+  }
+
+  getTickets() {
     this.ticketRepository.getAll({size: this.initialPageSize, page: 0}).subscribe(tickets => {
       this.tickets.data = tickets;
-    })
+    });
   }
 
   ngAfterViewInit() {
@@ -34,14 +39,14 @@ export class MainComponent implements OnInit {
     this.tickets.sort = this.sort;
   }
 
-  openTicketForm(element?: unknown): void {
+  openTicketForm(ticket?: ITicket): void {
     const dialogRef = this.dialog.open(TicketFormComponent, {
-      width: '250px',
-      data: {name: ''},
+      data: ticket,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+    dialogRef.afterClosed().subscribe(ticket => {
+      console.log(ticket);
+      this.ticketRepository.create({...this.tickets.data[0]}).subscribe(() => this.getTickets());
     });
   }
 

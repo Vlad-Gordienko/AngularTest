@@ -13,9 +13,10 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {HttpClientModule} from "@angular/common/http";
 import {TicketStatusDirective} from './directives/ticket-status.directive';
-import { TicketDateHTMLPipe } from './pipes/ticket-date.pipe';
-import { TicketIdPipe } from './pipes/ticket-id.pipe';
-import { CopyToClipboardDirective } from './directives/copy-to-clipboard.directive';
+import {TicketDateHTMLPipe} from './pipes/ticket-date.pipe';
+import {TicketIdPipe} from './pipes/ticket-id.pipe';
+import {CopyToClipboardDirective} from './directives/copy-to-clipboard.directive';
+import {CKEditorModule} from "ckeditor4-angular";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CopyToClipboardDirective } from './directives/copy-to-clipboard.directi
     MatIconModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    CKEditorModule,
   ],
   exports: [
     TicketStatusDirective,

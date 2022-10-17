@@ -1,0 +1,142 @@
+@import "src/styles";
+
+.ticket-form {
+  padding: 16px;
+  position: relative;
+
+  &__title {
+    margin: 0 0 0 37px;
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    color: $color-neutral;
+
+    text-align: center;
+  }
+
+  &__close-btn {
+    border: none;
+    outline: none;
+    background: transparent;
+
+    position: absolute;
+    top: 19px;
+    right: 19px;
+
+    cursor: pointer;
+
+    color: #909090;
+    transition: color .2s;
+
+    &:hover {
+      color: $color-neutral;
+    }
+  }
+
+  &__control {
+    margin: 10px 0;
+    padding: 14px 16px;
+    border: 1px solid #E6E8EB;
+    border-radius: 4px;
+    height: 48px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: $color-neutral;
+
+    &::placeholder {
+      color: #909090;
+    }
+  }
+
+  &__label {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: $color-neutral-gray;
+  }
+
+  &__file-input {
+    padding: 30px 0;
+    margin: 10px 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    border: 1px dashed #909090;
+    border-radius: 4px;
+
+    & span {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      color: $color-neutral-gray;
+    }
+
+    & button {
+      background-color: #E5E4F8;
+      border-radius: 4px;
+      border: none;
+
+      padding: 12px 36px;
+
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      color: $color-primary;
+
+      cursor: pointer;
+    }
+  }
+
+  &__file-preview {
+    margin-bottom: 30px;
+    padding: 12px 26px;
+    display: flex;
+    align-items: center;
+    gap: 23px;
+
+    & img {
+      width: auto;
+      height: 28px;
+    }
+
+    & span {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      color: $color-neutral-gray;
+    }
+
+    & button {
+      border: none;
+      outline: none;
+      background: transparent;
+
+      cursor: pointer;
+
+      color: #909090;
+      transition: color .2s;
+
+      &:hover {
+        color: $color-neutral;
+      }
+    }
+  }
+
+  &__create-btn {
+    width: 100%;
+    padding: 12px;
+
+    background-color: $color-primary;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: $color-white;
+  }
+}
